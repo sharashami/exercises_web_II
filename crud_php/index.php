@@ -1,11 +1,10 @@
 <?php  
  //index.php  
- include 'crud.php';  
- $object = new Crud();  
+ include 'action.php';  
  ?>  
  <html>  
       <head>  
-           <title>PHP Mysql Ajax listagem</title>  
+           <title>PHP Mysql listagem </title>  
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
@@ -29,37 +28,15 @@
       </head>  
       <body>  
            <div class="container box">  
-                <h3 align="center">PHP Mysql Ajax listagem</h3><br />  
+                <h3 align="center">PHP Mysql listagem</h3><br />  
                 <br />  
-               <a href="#" id="carregarlista">Carregar lista</a>
+               <form action="index.php" method="post"> 
+                   <input type="submit" name="action" value="Load"/>
+               </form>
+               
                 <div id="user_table" class="table-responsive">  
-                    
+                    <?php echo $resultado;?>    
                 </div>  
            </div>  
       </body>  
  </html>  
- <script type="text/javascript">  
-      $(document).ready(function(){  
-          
-          function load_data()  
-           {  
-                var action = "Load";  
-                $.ajax({  
-                     url:"action.php",  
-                     method:"POST",  
-                     data:{action:action},  
-                     success:function(data)  
-                     {  
-                          $('#user_table').html(data);  
-                     }  
-                });  
-           }  
-          
-          $('#carregarlista').click(function (){
-                 load_data();  
-          });
-          
-          
-           
-      });  
- </script>  
